@@ -1,11 +1,11 @@
 ## [用Go语言实现PHP内置函数](https://openset.github.io/php2go)
 
 [![Build Status](https://travis-ci.org/openset/php2go.svg?branch=master)](https://travis-ci.org/openset/php2go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/openset/php2go)](https://goreportcard.com/report/github.com/openset/php2go)
-[![GoDoc](https://godoc.org/github.com/openset/php2go/php?status.svg)](https://godoc.org/github.com/openset/php2go/php)
-[![GitHub contributors](https://img.shields.io/github/contributors/openset/php2go.svg)](https://github.com/openset/php2go/graphs/contributors)
-[![license](https://img.shields.io/github/license/openset/php2go.svg)](https://github.com/openset/php2go/blob/master/LICENSE)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/openset/php2go.svg?colorB=green)](https://github.com/openset/php2go/archive/master.zip)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rhettli/php2go)](https://goreportcard.com/report/github.com/rhettli/php2go)
+[![GoDoc](https://godoc.org/github.com/rhettli/php2go/php?status.svg)](https://godoc.org/github.com/rhettli/php2go/php)
+[![GitHub contributors](https://img.shields.io/github/contributors/openset/php2go.svg)](https://github.com/rhettli/php2go/graphs/contributors)
+[![license](https://img.shields.io/github/license/openset/php2go.svg)](https://github.com/rhettli/php2go/blob/master/LICENSE)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/openset/php2go.svg?colorB=green)](https://github.com/rhettli/php2go/archive/master.zip)
 
 这是一个用Go语言开发的辅助库，尤其适用于熟悉PHP内置函数的开发者，将会实现PHP内置函数。
 
