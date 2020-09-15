@@ -1,10 +1,15 @@
 package php
 
 import (
+	"errors"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
+	"strings"
 	"syscall"
 	"time"
 )
@@ -22,6 +27,55 @@ func Chmod(name string, mode os.FileMode) error {
 // Chown - Chown changes the numeric uid and gid of the named file.
 func Chown(name string, uid int, gid int) error {
 	return os.Chown(name, uid, gid)
+}
+
+func FileInfo(filePath string) (*os.FileInfo, error) {
+	if info, err := os.Stat(filePath); os.IsNotExist(err) {
+		return &info, nil
+	} else {
+		return nil, err
+	}
+}
+
+func CopyDir(src string, dest string) (bool, error) {
+	FormatPath := func(s string) string {
+		switch runtime.GOOS {
+		case "windows":
+			return strings.Replace(s, "/", "\\", -1)
+		case "darwin", "linux":
+			return strings.Replace(s, "\\", "/", -1)
+		default:
+			panic("only support linux,windows,darwin, but os is " + runtime.GOOS)
+			return s
+		}
+	}
+	src = FormatPath(src)
+	dest = FormatPath(dest)
+	var cmd *exec.Cmd
+	switch runtime.GOOS {
+	case "windows":
+		cmd = exec.Command("xcopy", src, dest, "/I", "/E")
+	case "darwin", "linux":
+		cmd = exec.Command("cp", "-R", src, dest)
+	default:
+		panic("not support os")
+	}
+
+	outPut, e := cmd.Output()
+	if e != nil {
+		return false, e
+	}
+	fmt.Println(outPut)
+	return true, nil
+}
+
+// CopySymLink - copy a link
+func CopySymLink(source, dest string) error {
+	link, err := os.Readlink(source)
+	if err != nil {
+		return err
+	}
+	return os.Symlink(link, dest)
 }
 
 // Copy - Copies file
@@ -98,8 +152,20 @@ func IsWriteable(name string) bool {
 }
 
 // Mkdir - Makes directory
-func Mkdir(name string, mode os.FileMode) error {
-	return os.Mkdir(name, mode)
+//func Mkdir(name string, mode os.FileMode) error {
+//	return os.Mkdir(name, mode)
+//}
+
+func Mkdir(dir string) error {
+	if r := FileExists(dir); !r {
+		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
+			//log.Println("mkdir err:==", dir)
+			return errors.New("upload fail,mkdir:==")
+		}
+	} else {
+		//log.Println("path exist:==", dir)
+	}
+	return nil
 }
 
 // Realpath - Returns canonicalized absolute pathname
