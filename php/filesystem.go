@@ -2,7 +2,6 @@ package php
 
 import (
 	"errors"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -54,18 +53,18 @@ func CopyDir(src string, dest string) (bool, error) {
 	var cmd *exec.Cmd
 	switch runtime.GOOS {
 	case "windows":
-		cmd = exec.Command("xcopy", src, dest, "/I", "/E")
+		cmd = exec.Command("xcopy", src, dest, "/I", "/E", "/R")
 	case "darwin", "linux":
 		cmd = exec.Command("cp", "-R", src, dest)
 	default:
 		panic("not support os")
 	}
 
-	outPut, e := cmd.Output()
+	_, e := cmd.Output()
 	if e != nil {
 		return false, e
 	}
-	fmt.Println(outPut)
+	//fmt.Println(outPut)
 	return true, nil
 }
 
