@@ -13,7 +13,7 @@
 
 ```shell
 
-go get -u github.com/openset/php2go/php
+go get -u github.com/rhettli/php2go
 
 ```
 
@@ -28,7 +28,7 @@ PHP下划线命名转为Go大驼峰命名。
 package main
 
 import (
-    "github.com/openset/php2go/php"
+    "github.com/rhettli/php2go/php"
 )
 
 func main() {
@@ -39,20 +39,20 @@ func main() {
 
 ```
 
-[More](https://github.com/openset/php2go/blob/master/main.go)
+[More](https://github.com/rhettli/php2go/blob/master/main.go)
 
 ### 项目进度
 
-[TODO List](https://github.com/openset/php2go/blob/master/TODO.md)
+[TODO List](https://github.com/rhettli/php2go/blob/master/TODO.md)
 
 ### 贡献代码
 
-[贡献指南](https://github.com/openset/php2go/blob/master/.github/CONTRIBUTING.md)
+[贡献指南](https://github.com/rhettli/php2go/blob/master/.github/CONTRIBUTING.md)
 
 ## Contributors
 
-[Your contributions are always welcome!](https://github.com/openset/php2go/graphs/contributors)
+[Your contributions are always welcome!](https://github.com/rhettli/php2go/graphs/contributors)
 
 ## LICENSE
 
-Released under [MIT](https://github.com/openset/php2go/blob/master/LICENSE) LICENSE
+Released under [MIT](https://github.com/rhettli/php2go/blob/master/LICENSE) LICENSE
