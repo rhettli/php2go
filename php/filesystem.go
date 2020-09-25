@@ -53,7 +53,7 @@ func CopyDir(src string, dest string) (bool, error) {
 	var cmd *exec.Cmd
 	switch runtime.GOOS {
 	case "windows":
-		cmd = exec.Command("xcopy", src, dest, "/I", "/E", "/R")
+		cmd = exec.Command("xcopy", src, dest, "/I", "/E", "/R", "/Y")
 	case "darwin", "linux":
 		cmd = exec.Command("cp", "-R", src, dest)
 	default:
@@ -79,7 +79,7 @@ func CopySymLink(source, dest string) error {
 
 // Copy - Copies file
 func Copy(dstName string, srcName string) (written int64, err error) {
-	src, err := os.Open(srcName)
+	src, err := os.Create(srcName)
 	if err != nil {
 		return
 	}
